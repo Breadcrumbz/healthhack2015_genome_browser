@@ -34,6 +34,7 @@
         font-family: helvetica;
         margin: 0;
         border: 0;
+        font-weight: 100;
       }
         .seqdata {
           -webkit-flex: 1;
@@ -58,20 +59,39 @@
         }
 
         grayband {
-          background-color: #A5D6A7
+          background-color: #C8E6C9
 ;
           width:100%;
           margin: 0;
           border: 0
+          padding: 25px;
         }
-        whiteband
-        {background-color: white;
+        whiteband {
+          background-color: white;
           width: 100%;
-        img{
-          width:200%;
-        height: 200%; }
+          padding:25px;
+         }
 
+         headband {
+           background-color: #A5D6A7;
+         }
+
+
+        img{
+        height: 50%;
         }
+
+        h1{
+          font-weight: lighter;
+        }
+
+        h3 {
+          font-weight: normal;
+        }
+        h4 {
+          font-weight: lighter;
+        }
+
       </style>
       <div class="sequencedetails" style="display: -webkit-flex; display: flex; height: 170px;">
         <template repeat="{{anno in annotations}}">
@@ -84,6 +104,7 @@
   </template>
   </div>
   <template is="dom-bind" id="t">
+    <paper-toast id='toasty'></paper-toast>
     <div>
       <iron-pages selected="{{selected}}">
         <div class="vertical layout fit center-justified">
@@ -142,13 +163,16 @@
           </h3>
           <paper-input id="taxon_input" label="taxonomy ID" value="{{taxon_ID}}"></paper-input>
           <div class="horizontal layout">
-          <paper-button id="uploadFasta" style="background-color:#F50057;margin:3px" onclick="document.getElementById('uploadButton').click();document.getElementById('submitFasta').disabled = false; document.getElementById('submitFasta').style.backgroundColor='#3F51B5'">Select (*.fa/*.fasta)</paper-button>
+          <paper-button id="uploadFasta" style="color: white; background-color:rgb(239, 53, 53);margin:3px" onclick="document.getElementById('uploadButton').click();document.getElementById('submitFasta').disabled = false; document.getElementById('submitFasta').style.backgroundColor='#3F51B5'">Select (*.fa/*.fasta)</paper-button>
           <paper-button id="submitFasta" style="margin:3px" onclick="document.submitFasta()" disabled>Upload</paper-button>
         </div>
         <grayband class='vertical layout center'>
+          <paper-progress style="width:100%" value="{{progress}}"></paper-progress>
+
         </div>
 
         <div class="vertical layout center">
+
           <div class="horizontal layout around-justified">
             <paper-button onclick="template.selected = 1">Genome Upload</paper-button>
             <paper-button onclick="template.selected = 2">Genome/Annotation Search</paper-button>
@@ -169,7 +193,7 @@
                       <td>{{genome.name}}</td>
                       <td>{{genome.abbrev}}</td>
                       <td>
-                        <paper-button style="background-color:#F50057;color:#fff" onclick="template.genome = {{item.abbrev}}; template.subselected = 3;">Add</paper-button>
+                        <paper-button style="background-color:rgb(239, 53, 53);color:#fff" onclick="template.genome = {{item.abbrev}}; template.subselected = 3;">Add</paper-button>
                       </td>
                     </tr>
                   </template>
@@ -198,10 +222,12 @@
           <h4 class="example_input">e.g. Drosophila birchii RNASeq data</h4>
           <paper-textarea required auto-validate error-message="required" style="min-width:200px;max-width:400px;" maxlength="50" label="short label" rows="1" max-rows="4"></paper-textarea>
           <div class="horizontal layout">
-            <paper-button style="background-color:#F50057;color:#fff;margin:2px;margin-top:20px" onclick="document.getElementById('uploadButton').click();document.getElementById('submitBED').disabled = false; document.getElementById('submitBED').style.backgroundColor='#3F51B5'">Select (*.bed)</paper-button>
+            <paper-button style="background-color:rgb(239, 53, 53);color:#fff;margin:2px;margin-top:20px" onclick="document.getElementById('uploadButton').click();document.getElementById('submitBED').disabled = false; document.getElementById('submitBED').style.backgroundColor='#3F51B5'">Select (*.bed)</paper-button>
             <paper-button id="submitBED" disabled style="margin:2px;margin-top:20px" onclick="document.submitBED()">Upload</paper-button>
           </div>
         </div>
+        <paper-progress style="width:100%" value="{{progress}}"></paper-progress>
+
         <div>
           <iron-pages selected="{{subselected}}">
 
