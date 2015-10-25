@@ -1,5 +1,4 @@
-# FileUM 
-File Upload Manager
+# FileUM (" File Upload Manager")
 
 ##About
 FileUM (the application) is a front end interface for automating the upload of genome file types for visualisation in a [Genome Browser](http://gb.pearg.com).  Generally the features  of a genome browser are:
