@@ -140,20 +140,20 @@
           <whiteband class='vertical layout center'>
           <h3 class="wizard_question_text">What description would you like to use for this genome assembly?</h3>
           <h4 class="example_input">e.g. 2014 assembly version 1, with ABySS</h4>
-          <paper-input required auto-validate error-message="required" label="description"></paper-input>
+          <paper-input id="gen_desc" required auto-validate error-message="required" label="description"></paper-input>
           </whiteband>
           <grayband class='vertical layout center'>
           <h3 class="wizard_question_text">What is the source of this genome assembly?</h3>
           <h4 class="example_input">e.g. Genomic Basis for Adaption to Climate Change Project</h4>
-          <paper-input required auto-validate error-message="required" label="Source"></paper-input>
+          <paper-input id="gen_src" required auto-validate error-message="required" label="Source"></paper-input>
         </grayband>
         <whiteband class='vertical layout center'>
           <h3 class="wizard_question_text">Which scaffold region should Genome Browser display by default?</h3>
           <h4 class="example_input">e.g. scaffold<b>1</b>:<b>0</b>-<b>1000,000</b></h4>
-          <paper-input label="scaffold number" type="number"></paper-input>
+          <paper-input id="gen_scaffnum" label="scaffold number" type="number"></paper-input>
           <div class="horizontal layout">
-            <paper-input label="Start" type="number" style="margin-right:3px;width:100px"></paper-input>
-            <paper-input label="End" type="number" style="margin-right:3px;width:100px"></paper-input>
+            <paper-input id="gen_scaff_st" label="Start" type="number" style="margin-right:3px;width:100px"></paper-input>
+            <paper-input id="gen_scaff_end" label="End" type="number" style="margin-right:3px;width:100px"></paper-input>
           </div>
         </whiteband>
 
@@ -211,16 +211,16 @@
           <h1>Annotation Upload</h1>
           <h3 class="wizard_question_text">What is the name of the annotation track</h3>
           <h4 class="example_input">e.g. droBir1_annotations</h4>
-          <paper-input required auto-validate error-message="required" style="min-width:200px;max-width:400px" label="annotation name"></paper-input>
+          <paper-input id="anno_name" required auto-validate error-message="required" style="min-width:200px;max-width:400px" label="annotation name"></paper-input>
           <h3 class="wizard_question_text">Which version of the bed format is the file?</h3>
           <h4 class="example_input">e.g. 6</h4>
-          <paper-input style="min-width:200px;max-width:400px" label="BED version" type="number"></paper-input>
+          <paper-input id="anno_bed_num" style="min-width:200px;max-width:400px" label="BED version" type="number"></paper-input>
           <h3 class="wizard_question_text">What would you like to use as the long-form label?</h3>
           <h4 class="example_input">e.g. mixed life stage transcriptome data for Drosophila birchii</h4>
-          <paper-textarea required auto-validate error-message="required" style="width:300px;" maxlength="200" label="long label" rows="1" max-rows="4"></paper-textarea>
+          <paper-textarea id="anno_long_label" required auto-validate error-message="required" style="width:300px;" maxlength="200" label="long label" rows="1" max-rows="4"></paper-textarea>
           <h3 class="wizard_question_text">What would you like to use as the short-form label?</h3>
           <h4 class="example_input">e.g. Drosophila birchii RNASeq data</h4>
-          <paper-textarea required auto-validate error-message="required" style="min-width:200px;max-width:400px;" maxlength="50" label="short label" rows="1" max-rows="4"></paper-textarea>
+          <paper-textarea id="anno_short_label" required auto-validate error-message="required" style="width:300px" maxlength="50" label="short label" rows="1" max-rows="4"></paper-textarea>
           <div class="horizontal layout">
             <paper-button style="background-color:rgb(239, 53, 53);color:#fff;margin:2px;margin-top:20px" onclick="document.getElementById('uploadButton').click();document.getElementById('submitBED').disabled = false; document.getElementById('submitBED').style.backgroundColor='#3F51B5'">Select (*.bed)</paper-button>
             <paper-button id="submitBED" disabled style="margin:2px;margin-top:20px" onclick="document.submitBED()">Upload</paper-button>
