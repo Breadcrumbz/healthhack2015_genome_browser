@@ -15,6 +15,7 @@ connection.onopen = function(session) {
     speciesInput = document.getElementById('species_input');
     genusInput = document.getElementById('genus_input');
     taxonInput = document.getElementById('taxon_input');
+    toast_notif = document.getElementById('toasty');
     speciesCheckInd = document.getElementById('speciesCheckInd');
     template = document.getElementById('t');
 
@@ -139,6 +140,29 @@ connection.onopen = function(session) {
     document.r.on('fileSuccess', function(file, message) {
       console.log('fileSuccess', file, message);
       console.log(document.r.files);
+      if(document.up_type = 'genome') {
+          session.call('com.gb.upload_genome', []).then(
+              function(res) {
+                  console.log(res);
+                  toast_notif = 'Genome uploaded successfully';
+                  toast_notif.show();
+              },
+              function(err) {
+                  toast_notif = 'Annotation file uploaded';
+                  toast_notif.show();
+                  console.log(err);
+              }
+          );
+      } else {
+          session.call('com.gb.upload_annotation', []).then(
+              function(res) {
+                  console.log(res);
+              },
+              function(err) {
+                console.log(err);
+              }
+          );
+      }
       // enable repeated upload since other user can delete the file on the server
       // and this user might want to reupload the file
       template.progress = 0;
