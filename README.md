@@ -7,7 +7,7 @@ FileUM (the application) is a front end interface for automating the upload of g
 - each genome also references file blobs on the filesystem to further express data; 
 
 This will be of benefit to genetics researchers (without any bioinfomatics skill set) to contribute data and knowledge to a common database. Thereby, increasing accessibility to the wider scientific community and further research efforts in these domains. 
-This project was created as part of [Healthhack 2015 Melbourne] (http://healthhack.com.au)
+This project was created as part of [Healthhack 2015] (http://healthhack.com.au) taking place in [Melbourne](http://healthhack.com.au/melbourne.html).
 
 ## Tech Stack
 Created as an open source tool with a high level of extensibility, FileUM is uses the following: 
