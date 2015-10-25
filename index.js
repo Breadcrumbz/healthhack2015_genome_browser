@@ -48,6 +48,22 @@ connection.onopen = function(session) {
         }
       );
     }
+    
+    document.submitBED = function() {
+        document.r.upload();
+        
+    }
+    
+    document.submitFasta = function() {
+        document.r.upload().then(
+		function(res) {
+			console.log('sdfsdfsdf');
+		},
+		function(err) {
+			console.log(err);
+		}
+);
+    }
 
     landingAnnotation.addEventListener('click', function(e) {
     	template.selected = 2;
@@ -122,7 +138,7 @@ connection.onopen = function(session) {
     });
     document.r.on('fileSuccess', function(file, message) {
       console.log('fileSuccess', file, message);
-      console.log(r.files);
+      console.log(document.r.files);
       // enable repeated upload since other user can delete the file on the server
       // and this user might want to reupload the file
       template.progress = 0;
